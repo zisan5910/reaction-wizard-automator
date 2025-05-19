@@ -18,14 +18,6 @@ import Footer from './components/Footer';
 import InstallPWA from './components/InstallPWA';
 import { content, certificates } from './data/content';
 
-// Define the expected content type to match component requirements
-interface ContentType {
-  [key: string]: any;
-  sections: { [key: string]: string };
-  contact: string;
-  name: string;
-}
-
 function App() {
   const [language, setLanguage] = useState<'en' | 'bn'>('en');
   const [activeSection, setActiveSection] = useState<string>('profile');
@@ -74,8 +66,14 @@ function App() {
     setActiveSection(section);
   };
 
-  // Cast content to the required type to satisfy TypeScript
-  const typedContent = content as unknown as ContentType;
+  // Create a correctly typed content object that satisfies the ContentType interface
+  const typedContent = {
+    ...content,
+    // Ensure the required properties exist
+    sections: content[language].sections || {},
+    contact: content[language].contact || '',
+    name: content[language].name || ''
+  };
 
   return (
     <div className="min-h-screen bg-slate-50">

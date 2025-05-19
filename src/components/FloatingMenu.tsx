@@ -5,7 +5,6 @@ import {
   User,
   Loader2,
   X,
-  Mail,
 } from 'lucide-react';
 import { format } from 'date-fns';
 
