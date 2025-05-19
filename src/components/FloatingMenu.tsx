@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import {
   Send,
@@ -5,6 +6,7 @@ import {
   User,
   Loader2,
   X,
+  Mail,
 } from 'lucide-react';
 import { format } from 'date-fns';
 

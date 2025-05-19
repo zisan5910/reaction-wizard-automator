@@ -18,6 +18,14 @@ import Footer from './components/Footer';
 import InstallPWA from './components/InstallPWA';
 import { content, certificates } from './data/content';
 
+// Define a proper type for our content
+interface ContentType {
+  [key: string]: any;
+  sections: { [key: string]: string };
+  contact: string;
+  name: string;
+}
+
 function App() {
   const [language, setLanguage] = useState<'en' | 'bn'>('en');
   const [activeSection, setActiveSection] = useState<string>('profile');
@@ -66,8 +74,8 @@ function App() {
     setActiveSection(section);
   };
 
-  // Create a correctly typed content object that satisfies the ContentType interface
-  const typedContent = {
+  // Create a properly typed content object
+  const typedContent: ContentType = {
     ...content,
     // Ensure the required properties exist
     sections: content[language].sections || {},
