@@ -1,5 +1,4 @@
 
-import { motion } from 'framer-motion';
 import { Element } from 'react-scroll';
 import { Download, ScrollText } from './icons';
 import { cn } from '../lib/utils';
@@ -28,12 +27,7 @@ const ProfileSection = ({ language, content, scrollToSection }: ProfileSectionPr
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Profile Image */}
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="relative"
-            >
+            <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/75 to-blue-500/75 rounded-full blur-xl opacity-75"></div>
               <div className="absolute inset-0 rounded-full border-4 border-white/10"></div>
               <img
@@ -41,15 +35,11 @@ const ProfileSection = ({ language, content, scrollToSection }: ProfileSectionPr
                 alt="Md Ridoan Mahmud Zisan"
                 className="w-56 h-56 rounded-full border-4 border-white/20 shadow-2xl relative z-10"
               />
-            </motion.div>
+            </div>
 
             {/* Profile Content */}
             <div className="flex-1 text-center lg:text-left">
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
+              <div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300">
                   {content[language].name}
                 </h1>
@@ -59,15 +49,10 @@ const ProfileSection = ({ language, content, scrollToSection }: ProfileSectionPr
                 <p className="text-lg max-w-2xl mx-auto lg:mx-0 mb-8 text-slate-300 leading-relaxed">
                   {content[language].statement}
                 </p>
-              </motion.div>
+              </div>
 
               {/* Action Buttons */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4"
-              >
+              <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
                 <a
                   href="/Resume.pdf"
                   download="Md Ridoan Mahmud Zisan.pdf"
@@ -90,7 +75,7 @@ const ProfileSection = ({ language, content, scrollToSection }: ProfileSectionPr
                   <ScrollText size={20} />
                   {content[language].certifications}
                 </button>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

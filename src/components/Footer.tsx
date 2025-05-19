@@ -1,5 +1,4 @@
 
-import { motion } from 'framer-motion';
 import { Element } from 'react-scroll';
 import {
   Mail,
@@ -211,39 +210,28 @@ const Footer = ({ language, scrollToSection, content }: FooterProps) => {
   };
 
   const renderQuickLinks = () => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-    >
+    <div>
       <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
         {footerData.quickLinks.title[language]}
       </h3>
       <ul className="space-y-3">
         {footerData.quickLinks.items.map((item, index) => (
           <li key={index}>
-            <motion.button
-              whileHover={{ x: 5 }}
+            <button
               onClick={item.action}
               className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors w-full text-left"
             >
               {item.icon}
               {item.text[language]}
-            </motion.button>
+            </button>
           </li>
         ))}
       </ul>
-    </motion.div>
+    </div>
   );
 
   const renderDocuments = () => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.1 }}
-      viewport={{ once: true }}
-    >
+    <div>
       <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
         <FileText size={20} />
         {footerData.documents.title[language]}
@@ -251,27 +239,21 @@ const Footer = ({ language, scrollToSection, content }: FooterProps) => {
       <ul className="space-y-3">
         {footerData.documents.items.map((item, index) => (
           <li key={index}>
-            <motion.button
-              whileHover={{ x: 5 }}
+            <button
               onClick={item.action}
               className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors w-full text-left"
             >
               {item.icon}
               {item.text[language]}
-            </motion.button>
+            </button>
           </li>
         ))}
       </ul>
-    </motion.div>
+    </div>
   );
 
   const renderContactInfo = () => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      viewport={{ once: true }}
-    >
+    <div>
       <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
         <Mail size={20} />
         {footerData.contact.title[language]}
@@ -279,9 +261,8 @@ const Footer = ({ language, scrollToSection, content }: FooterProps) => {
       <address className="not-italic space-y-3">
         {footerData.contact.items.map((item, index) =>
           item.link ? (
-            <motion.a
+            <a
               key={index}
-              whileHover={{ x: 5 }}
               href={item.link}
               className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
             >
@@ -289,55 +270,46 @@ const Footer = ({ language, scrollToSection, content }: FooterProps) => {
               {typeof item.text === 'string'
                 ? item.text
                 : item.text[language]}
-            </motion.a>
+            </a>
           ) : (
-            <motion.p
+            <p
               key={index}
-              whileHover={{ x: 5 }}
               className="flex items-center gap-2 text-gray-300"
             >
               {item.icon}
               {typeof item.text === 'string'
                 ? item.text
                 : item.text[language]}
-            </motion.p>
+            </p>
           )
         )}
       </address>
-    </motion.div>
+    </div>
   );
 
   const renderSocialLinks = () => (
     <Element name="social-links">
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        viewport={{ once: true }}
-        className="mt-12 pt-8 border-t border-gray-700"
-      >
+      <div className="mt-12 pt-8 border-t border-gray-700">
         <div className="flex flex-col items-center">
           <h4 className="text-lg font-medium mb-6">
             {footerData.social.title[language]}
           </h4>
           <div className="flex justify-center space-x-6">
             {footerData.social.links.map((social, index) => (
-              <motion.a
+              <a
                 key={index}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ y: -3, scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
                 className={`text-gray-300 ${social.color} transition-colors duration-300`}
                 aria-label={`Social link ${index}`}
               >
                 {social.icon}
-              </motion.a>
+              </a>
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </Element>
   );
 
@@ -359,13 +331,7 @@ const Footer = ({ language, scrollToSection, content }: FooterProps) => {
         {renderSocialLinks()}
 
         {/* Copyright */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-8 text-center text-gray-400 text-sm"
-        >
+        <div className="mt-8 text-center text-gray-400 text-sm">
           <p>
             &copy; {new Date().getFullYear()} {content?.name || ''}.{' '}
             {language === 'en'
@@ -373,7 +339,7 @@ const Footer = ({ language, scrollToSection, content }: FooterProps) => {
               : 'সমস্ত অধিকার সংরক্ষিত'}
             .
           </p>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
