@@ -25,7 +25,7 @@ const Navigation = ({
 }: NavigationProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { ref, inView } = useInView({
+  const { ref } = useInView({
     threshold: 0,
     initialInView: true,
   });
@@ -101,7 +101,7 @@ const Navigation = ({
         {isMenuOpen && (
           <div className="lg:hidden overflow-hidden bg-white">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigationItems.map((item, index) => (
+              {navigationItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => {

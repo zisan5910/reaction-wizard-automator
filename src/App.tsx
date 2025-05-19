@@ -18,6 +18,14 @@ import Footer from './components/Footer';
 import InstallPWA from './components/InstallPWA';
 import { content, certificates } from './data/content';
 
+// Define the expected content type to match component requirements
+interface ContentType {
+  [key: string]: any;
+  sections: { [key: string]: string };
+  contact: string;
+  name: string;
+}
+
 function App() {
   const [language, setLanguage] = useState<'en' | 'bn'>('en');
   const [activeSection, setActiveSection] = useState<string>('profile');
@@ -66,6 +74,9 @@ function App() {
     setActiveSection(section);
   };
 
+  // Cast content to the required type to satisfy TypeScript
+  const typedContent = content as unknown as ContentType;
+
   return (
     <div className="min-h-screen bg-slate-50">
       <Navigation 
@@ -80,7 +91,7 @@ function App() {
 
       <ProfileSection
         language={language}
-        content={content as any}
+        content={typedContent}
         scrollToSection={scrollToSection}
       />
 
