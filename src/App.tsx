@@ -21,9 +21,6 @@ import { content, certificates } from './data/content';
 // Define the expected content type to match component requirements
 interface ContentType {
   [key: string]: any;
-  sections: { [key: string]: string };
-  contact: string;
-  name: string;
 }
 
 function App() {
@@ -74,9 +71,6 @@ function App() {
     setActiveSection(section);
   };
 
-  // Cast content to the required type to satisfy TypeScript
-  const typedContent = content as unknown as ContentType;
-
   return (
     <div className="min-h-screen bg-slate-50">
       <Navigation 
@@ -91,7 +85,7 @@ function App() {
 
       <ProfileSection
         language={language}
-        content={typedContent}
+        content={content}
         scrollToSection={scrollToSection}
       />
 
